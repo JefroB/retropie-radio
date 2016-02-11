@@ -118,7 +118,7 @@ function unpackstartsounds {
 	if [ -f "/home/pi/.mpd/music.dir" ]
 	then 
 		echo -e "\x1B[31m Installing startsounds... \x1B[0m"
-    		sudo tar -zxvf /home/pi/.mpd/startsounds.tar.gz -C "$MUSICDIR"/startsounds
+    		sudo tar -zxvf /home/pi/.mpd/startsounds.tar.gz -C "$MUSICDIR"
     		wait
     		if [ -f "$MUSICDIR"/startsounds/kwrp.mp3 ]
 		then 
@@ -129,7 +129,7 @@ function unpackstartsounds {
 }
 function unpackgameart {
 	echo -e "\x1B[31m Installing gamelist... \x1B[0m"
-    	sudo tar -zxvf /home/pi/.mpd/gamelist.tar.gz -C /home/pi/.emulationstation/gamelists/radio
+    	sudo tar -zxvf /home/pi/.mpd/gamelist.tar.gz -C /home/pi/.emulationstation/gamelists
     	wait
     	if [ -f "/home/pi/.emulationstation/gamelists/radio/gamelist.xml" ]
 	then 
@@ -138,7 +138,7 @@ function unpackgameart {
 	fi
 	sleep 1
 	echo -e "\x1B[31m Installing images... \x1B[0m"
-    	sudo tar -zxvf /home/pi/.mpd/images.tar.gz -C /home/pi/.emulationstation/downloaded_images/radio
+    	sudo tar -zxvf /home/pi/.mpd/images.tar.gz -C /home/pi/.emulationstation/downloaded_images
     	wait
     	if [ -f "/home/pi/.emulationstation/downloaded_images/radio/play.png" ]
 	then 
@@ -168,6 +168,8 @@ function editemulaunchfiles {
 	echo -e "\x1B[31m Editing emulator luanch files. Please wait... \x1B[0m"
 	sleep 5
 	bash "/home/pi/.mpd/install/emulaunceredits.sh"
+	wait
+	rm "/home/pi/.mpd/install/emulaunceredits.sh" >/dev/null
 }
 function deleteinstallfiles {
 	sudo rm -rf /home/pi/.mpd/install

@@ -1,11 +1,12 @@
 # retropie-radio
+##### Description:
 Background music for retropie using mpd, with playlist management via emulationstation. 
 
+##### Background:
 Any modern console is incomplete without background music. Background music also seemed to be a popular recent feature request on the petrockblock.com forums. Zigurana and I came up with a quick set of requirements, that I slightly changed along the way.
 
----
 
-# Requirements:
+##### Requirements:
 + fade-out / fade-in upon starting /stopping an emulator
 + ~~volume level normalization~~
 + ~~dynamically~~ create random playlist based on files present in directory
@@ -15,9 +16,9 @@ Any modern console is incomplete without background music. Background music also
 + hackable
 + ES integration
 
----
 
-# Notes:
+
+##### Notes:
 + _This will rename files and folders in your music collection. As always, be sure to have a backup._
 
 + _Complete compaitibility with music libraries ofver 10,000 .MP3s is not guaranteed. With a library of that size, you may see issues saving playlists, in particular, the "all songs" playlist_

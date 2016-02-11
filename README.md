@@ -15,7 +15,7 @@ Background music for retropie using mpd, with playlist management via emulations
             <name>radio</name>
             <fullname>Radio</fullname>
             <path>/home/pi/.mpd/OtherScripts</path>
-            <extension>.rp .sh</extension>
+            <extension>.sh .SH</extension>
             <command>%ROM%</command>
             <platform/>
             <theme>radio</theme>

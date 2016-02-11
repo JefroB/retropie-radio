@@ -33,13 +33,17 @@
 
 # Installation Steps
 
-1.   Backup your SD card, and your music collection, if it is seperate.
+### Step 1
+Backup your SD card, and your music collection, if it is seperate.
 
-2.  (optional but recommended) If you'd like music to start playing at boot time, you'll need to add the following to /etc/rc.local:
+### Step 2
+(optional but recommended) If you'd like music to start playing at boot time, you'll need to add the following to /etc/rc.local:
 
         su pi -c '/home/pi/.mpd/startup_playback.sh &'
         
-3. Save the following script as retropie-radio in 
+### Step 3
+Save the following script as retropie-radio in 
+
 
 ```
 #!/usr/bin/env bash
@@ -81,6 +85,5 @@ function configure_radio() {
 	setESSystem 'Radio' 'radio' '~/.mpd/OtherScripts' '.sh .SH' 'bash %ROM%' 'music' 'radio'
 }
 ```
-
-  
-4.  You can now run the retropie-setup script and install retropie-radio from binary or source. (It’ll be listed under individual emulators towards the bottom of the list.)
+### Step 4
+You can now run the retropie-setup script and install retropie-radio from binary or source. (It’ll be listed under individual emulators towards the bottom of the list.)

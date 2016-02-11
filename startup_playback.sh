@@ -24,17 +24,16 @@ function loadlastpl {
 }
 
 function insertsound {
-	sleep .02
 	mpc -p 6700 update startsounds/ >/dev/null
-	sleep .3
+	wait
 	mpc -p 6700 insert startsounds/kwrp.mp3 >/dev/null
-	sleep .3
+	wait
 }
 
 function setvolume0 {
 	local VOL=0
 	mpc volume $VOL >/dev/null
-	sleep .05
+	wait
 }
 
 function play {

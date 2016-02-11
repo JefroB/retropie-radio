@@ -1,9 +1,9 @@
 # retropie-radio
 ##### Description:
-Background music for retropie using mpd, with playlist management via emulationstation. 
+> Background music for retropie using mpd, with playlist management via emulationstation. 
 
 ##### Background:
-Any modern console is incomplete without background music. Background music also seemed to be a popular recent feature request on the petrockblock.com forums. Zigurana and I came up with a quick set of requirements, that I slightly changed along the way.
+> Any modern console is incomplete without background music. Background music also seemed to be a popular recent feature request on the petrockblock.com forums. Zigurana and I came up with a quick set of requirements, that I slightly changed along the way.
 
 
 ##### Requirements:

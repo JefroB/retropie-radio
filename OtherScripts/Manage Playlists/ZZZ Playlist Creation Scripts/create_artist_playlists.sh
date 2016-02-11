@@ -44,7 +44,7 @@ function createplaylists {
     		echo -e "\x1B[30m removing $filename.m3u \x1B[0m"
     		mpc -p 6700 rm $filename  > /dev/null 2>&1
     		wait
-    		echo -e "\x1B[32m creating $filename.m3u and playlist management script \x1B[0m"
+    		echo -e "\x1B[34m creating $filename.m3u and playlist management script \x1B[0m"
 #    		echo mpc -p 6700 findadd Artist "$e"
     		mpc -p 6700 findadd Artist "$e" >/dev/null
     		wait
@@ -71,7 +71,7 @@ function createplaylists {
     		echo mpc -p 6700 save custom_playlist" >/dev/null" >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Artists/"$filename.sh
 
 	done
-	echo Playlist creation complete successfully!
+	echo Playlist creation completed successfully!
 }
 function reboot {
 	echo now rebooting so that ES can see the new playlists...

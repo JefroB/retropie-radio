@@ -44,7 +44,7 @@ function createplaylists {
     		echo -e "\x1B[30m removing $filename.m3u \x1B[0m"
     		mpc -p 6700 rm $filename  > /dev/null 2>&1
     		wait
-    		echo -e "\x1B[32m creating $filename.m3u and playlist management script \x1B[0m"
+    		echo -e "\x1B[33m creating $filename.m3u and playlist management script \x1B[0m"
 #    		echo mpc -p 6700 findadd Genre "$e"
     		mpc -p 6700 findadd Genre "$e" >/dev/null
     		wait

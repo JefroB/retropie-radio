@@ -171,6 +171,12 @@ function editemulaunchfiles {
 	wait
 	rm "/home/pi/.mpd/install/emulaunceredits.sh" >/dev/null
 }
+function stopmpd {
+	mpc -p 6700 clear
+	wait
+	sudo killall mpd
+	wait
+}
 function deleteinstallfiles {
 	sudo rm -rf /home/pi/.mpd/install
 }
@@ -193,6 +199,7 @@ installpixeltheme
 editemulaunchfiles 
 allplalylists
 deleteinstallfiles
+stopmpd
 reboot
 quit
 # eof

@@ -69,6 +69,14 @@ function getmusicdirectory {
 		done
 	fi
 }
+function makedirs {
+mkdir "/home/pi/.mpd/OtherScripts/Manage Playlists/Genres"
+wait
+mkdir "/home/pi/.mpd/OtherScripts/Manage Playlists/Artists"
+wait
+mkdir "/home/pi/.mpd/OtherScripts/Manage Playlists/Albums"
+wait
+}
 function installpixeltheme {
 	if [ -f "/etc/emulationstation/themes/pixel/pixel.xml" ]
 	then 
@@ -119,7 +127,7 @@ function unpackstartsounds {
 }
 function unpackgameart {
 	echo -e "\x1B[31m Installing gamelist... \x1B[0m"
-    	sudo tar -zxvf /home/pi/.mpd/startsounds.tar.gz -C /home/pi/.emulationstation/gamelists/radio
+    	sudo tar -zxvf /home/pi/.mpd/gamelist.tar.gz -C /home/pi/.emulationstation/gamelists/radio
     	wait
     	if [ -f "/home/pi/.emulationstation/gamelists/radio/gamelist.xml" ]
 	then 
@@ -130,7 +138,7 @@ function unpackgameart {
 	echo -e "\x1B[31m Installing images... \x1B[0m"
     	sudo tar -zxvf /home/pi/.mpd/images.tar.gz -C /home/pi/.emulationstation/downloaded_images/radio
     	wait
-    	if [ -f "/home/pi/.emulationstation/gamelists/radio/gamelist.xml" ]
+    	if [ -f "/home/pi/.emulationstation/downloaded_images/radio/play.png" ]
 	then 
 		echo -e "\x1B[31m gamelist installed successfully. \x1B[0m"
 		sleep 1
@@ -171,6 +179,7 @@ function quit {
 	exit 0
 }
 backup
+makedirs
 getmusicdirectory
 unpackstartsounds
 unpackgameart

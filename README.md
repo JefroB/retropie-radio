@@ -38,23 +38,49 @@
 2.  (optional but recommended) If you'd like music to start playing at boot time, you'll need to add the following to /etc/rc.local:
 
         su pi -c '/home/pi/.mpd/startup_playback.sh &'
+        
+3. Save the following script as retropie-radio in 
 
+```
+#!/usr/bin/env bash
 
-3.  You'll also need to add the following to /etc/emulationstation/es_systems.cfg:
+# This file is part of The RetroPie Project
+# 
+# The RetroPie Project is the legal property of its developers, whose names are
+# too numerous to list here. Please refer to the COPYRIGHT.md file distributed with this source.
+# 
+# See the LICENSE.md file at the top-level directory of this distribution and 
+# at https://raw.githubusercontent.com/RetroPie/RetroPie-Setup/master/LICENSE.md
+#
 
-        <system>
-            <name>radio</name>
-            <fullname>Radio</fullname>
-            <path>/home/pi/.mpd/OtherScripts</path>
-            <extension>.sh .SH</extension>
-            <command>bash %ROM%</command>
-            <platform/>
-            <theme>radio</theme>
-        </system>
+rp_module_id="radio"
+rp_module_desc="Radio"
+
+function depends_radio() {
+	git clone https://github.com/Labelwhore/retropie-radio.git /home/pi/.mpd
+	wait
+	sudo chown pi:pi -R /home/pi/.mpd
+	wait
+        su pi -c 'bash ~/.mpd/install/setup.sh'
+}
+
+function sources_radio() {
+        git clone https://github.com/Labelwhore/retropie-radio.git /home/pi/.mpd
+}
+
+function build_radio() {
+}
+
+function install_radio() {
+	sudo chown pi:pi -R /home/pi/.mpd
+	wait
+        su pi -c 'bash ~/.mpd/install/setup.sh'
+}
+
+function configure_radio() {
+	setESSystem 'Radio' 'radio' '~/.mpd/OtherScripts' '.sh .SH' 'bash %ROM%' 'music' 'radio'
+}
+```
+
   
-  Note: This package includes a themeset for the pixel theme. Other themes are planned for a later date.
-  
-  
-4.  After making the above changes run the following command from the terminal:
-
-        git clone https://github.com/Labelwhore/retropie-radio.git ~/.mpd && bash ~/.mpd/install/setup.sh
+4.  You can now run the retropie-setup script and install retropie-radio from binary or source. (It’ll be listed under individual emulators towards the bottom of the list.)

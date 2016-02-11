@@ -20,7 +20,7 @@ Background music for retropie using mpd, with playlist management via emulations
             <fullname>Radio</fullname>
             <path>/home/pi/.mpd/OtherScripts</path>
             <extension>.sh .SH</extension>
-            <command>%ROM%</command>
+            <command>bash %ROM%</command>
             <platform/>
             <theme>radio</theme>
         </system>

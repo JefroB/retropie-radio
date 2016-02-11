@@ -58,11 +58,11 @@ function createplaylist {
 	do
 		let i=i+1
 		filepath=$e
-		echo -e "\x1B[01;93m adding file at the following location to playlist: \x1B[0m"
-		echo -e -e "\x1B[01;95m $filepath \x1B[0m"
+		echo -e "\x1B[33m adding file at the following location to playlist: \x1B[0m"
+		echo -e -e "\x1B[35m $filepath \x1B[0m"
 	#	echo adding file '@:' $filepath
 		mpc -p 6700 add $filepath
-		echo -e "\x1B[01;92m $i total songs added to playlist \x1B[0m"
+		echo -e "\x1B[32m $i total songs added to playlist \x1B[0m"
 	wait
 	done
 }
@@ -74,19 +74,19 @@ function saveplaylist {
 	wait
 	mpc -p 6700 playlist
 	wait
-	echo -e "\x1B[01;92m saving all_songs playlist \x1B[0m"
+	echo -e "\x1B[32m saving all_songs playlist \x1B[0m"
 	mpc -p 6700 save all_songs
 	echo -e "\x1B[01;91m playlist contains $i total songs. \x1B[0m"
 	wait
 	mpc -p 6700 save custom_playlist >/dev/null
-	echo -e "\x1B[01;96m setting all_songs playlist as current playlist. \x1B[0m"
+	echo -e "\x1B[36m setting all_songs playlist as current playlist. \x1B[0m"
 }
 function startplayback {
 	bash /home/pi/.mpd/startup_playback.sh
 }
 function quit {
 	sleep 9
-	echo -e "\x1B[01;95m WELCOME TO MOTHERGRABBIN RETROPIE \x1B[0m"
+	echo -e "\x1B[35m WELCOME TO MOTHERGRABBIN RETROPIE \x1B[0m"
 	sleep 12
 	exit 0
 }

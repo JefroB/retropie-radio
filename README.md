@@ -1,15 +1,19 @@
 # retropie-radio
 Background music for retropie using mpd, with playlist management via emulationstation. 
 
+  Note: This will rename files and folders in your music collection. As always, be sure to have a backup.
+
 
 # Installation Steps
 
-1.  (optional but recommended) If you'd like music to start playing at boot time, you'll need to add the following to /etc/rc.local:
+1.   Backup your SD card, and your music collection, if it is seperate.
+
+2.  (optional but recommended) If you'd like music to start playing at boot time, you'll need to add the following to /etc/rc.local:
 
         su pi -c '/home/pi/.mpd/startup_playback.sh &'
 
 
-2.  You'll also need to add the following to /etc/emulationstation/es_systems.cfg:
+3.  You'll also need to add the following to /etc/emulationstation/es_systems.cfg:
 
         <system>
             <name>radio</name>
@@ -24,6 +28,6 @@ Background music for retropie using mpd, with playlist management via emulations
   Note: This package includes a themeset for the pixel theme. Other themes are planned for a later date.
   
   
-3.  After making the above changes run the following command from the terminal:
+4.  After making the above changes run the following command from the terminal:
 
         git clone https://github.com/Labelwhore/retropie-radio.git ~/.mpd && bash ~/.mpd/install/setup.sh

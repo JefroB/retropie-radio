@@ -6,7 +6,7 @@ Background music for retropie using mpd, with playlist management via emulations
 
 1.  (optional but recommended) If you'd like music to start playing at boot time, you'll need to add the following to /etc/rc.local:
 
-        su fakeuser -c '/home/pi/.mpd/startup_playback.sh &'
+        su pi -c '/home/pi/.mpd/startup_playback.sh &'
 
 
 2.  You'll also need to add the following to /etc/emulationstation/es_systems.cfg:

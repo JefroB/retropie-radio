@@ -5,12 +5,13 @@ function backup {
 	echo -------------------------------------------------------------------------------
 	echo
 	PS3="Have you made a backup? "
-	select option in go yes no
+	select option in yes no
 	do
 	    case $option in
 	        yes) 
 	            echo "Ok. Installing..."
-	            sleep 3;;
+	            sleep 3
+	            break;;
 	        no)
 	            echo -e "\x1B[31m What are you waiting for? Go make a backup! \x1B[0m"
 	            sleep 3
@@ -67,6 +68,9 @@ function getmusicdirectory {
 		done
 	fi
 }
+function neededfiles {
+	touch ~/.mpd/{mpd.db,mpd.log,mpd.pid,mpdstate}
+}
 function installpixeltheme {
 	if [ -f "/etc/emulationstation/themes/pixel/pixel.xml" ]
 	then 
@@ -108,7 +112,7 @@ function unpackstartsounds {
 		echo -e "\x1B[31m Installing startsounds... \x1B[0m"
     		sudo tar -zxvf /home/pi/.mpd/startsounds.tar.gz -C "$MUSICDIR"/startsounds
     		wait
-    		if [ -f "'$MUSICDIR'"/startsounds/kwrp.mp3" ]
+   		if [ -f "home/pi/Music/startsounds/kwrp.mp3" ]
 		then 
 			echo -e "\x1B[31m Startsounds installed successfully. \x1B[0m"
 			sleep 1
@@ -117,7 +121,7 @@ function unpackstartsounds {
 }
 function unpackgameart {
 	echo -e "\x1B[31m Installing gamelist... \x1B[0m"
-    	sudo tar -zxvf /home/pi/.mpd/startsounds.tar.gz -C /home/pi/.emulationstation/gamelists/radio
+    	sudo tar -zxvf /home/pi/.mpd/gamelist.tar.gz -C /home/pi/.emulationstation/gamelists
     	wait
     	if [ -f "/home/pi/.emulationstation/gamelists/radio/gamelist.xml" ]
 	then 
@@ -126,28 +130,28 @@ function unpackgameart {
 	fi
 	sleep 1
 	echo -e "\x1B[31m Installing images... \x1B[0m"
-    	sudo tar -zxvf /home/pi/.mpd/images.tar.gz -C /home/pi/.emulationstation/downloaded_images/radio
+    	sudo tar -zxvf /home/pi/.mpd/images.tar.gz -C /home/pi/.emulationstation/downloaded_images
     	wait
     	if [ -f "/home/pi/.emulationstation/gamelists/radio/gamelist.xml" ]
 	then 
-		echo -e "\x1B[31m gamelist installed successfully. \x1B[0m"
+		echo -e "\x1B[31m images installed successfully. \x1B[0m"
 		sleep 1
 	fi
 }
 function installmpdmpc {
-		echo -e "\x1B[31m Installing mpd and mpc, please wait... \x1B[0m"
-		sudo apt-get install mpd mpc
+		echo -e "\x1B[31m Installing mpd and mpc, please be patient, this will take a while... \x1B[0m"
+		yes "yes" | sudo apt-get install mpd mpc >/dev/null
 		wait
 }
 function mpdupdate {
 	echo -e "\x1B[31m Starting mpd... \x1B[0m"
-	mpd
+	mpd >/dev/null
 	wait
 	echo -e "\x1B[31m Updating mpd database... \x1B[0m"
-	mpc -p 6700 update
+	mpc -p 6700 update >/dev/null
 	wait
 }
-function allplalylists {
+function allplaylists {
 	echo -e "\x1B[31m Creating all playlists. This can take some time... \x1B[0m"
 	sleep 5
 	bash "/home/pi/.mpd/OtherScripts/Manage Playlists/ZZZ Playlist Creation Scripts/create_all_playlists.sh"
@@ -170,14 +174,15 @@ function quit {
 }
 backup
 getmusicdirectory
+neededfiles
 unpackstartsounds
 unpackgameart
 installmpdmpc
 mpdupdate
 installpixeltheme
 editemulaunchfiles 
-allplalylists
-deleteinstallfiles
+allplaylists
+# deleteinstallfiles
 reboot
 quit
 # eof

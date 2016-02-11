@@ -70,8 +70,6 @@ function getmusicdirectory {
 	fi
 }
 function makedirs {
-mkdir "/home/pi/.mpd/playlists"
-wait
 mkdir "/home/pi/.mpd/OtherScripts/Manage Playlists/Genres"
 wait
 mkdir "/home/pi/.mpd/OtherScripts/Manage Playlists/Artists"

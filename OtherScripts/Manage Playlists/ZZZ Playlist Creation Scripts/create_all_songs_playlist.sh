@@ -1,6 +1,6 @@
 #!/bin/sh
 function startmpd {
-	mpd >/dev/null
+	mpd   > /dev/null 2>&1
 	wait
 }
 function getmusicdirectory {

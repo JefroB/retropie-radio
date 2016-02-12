@@ -1,6 +1,6 @@
 #!/bin/sh
 function mpcupdate {
-	mpc -p 6700 update
+	mpc -p 6700 update  > /dev/null 2>&1
 }
 
 function deletealbumlist {
@@ -38,13 +38,9 @@ function createplaylists {
 		secondtempname=${newname//</_}
 		thirdtempname=${secondtempname//>/_}
 		filename=${thirdtempname//\//+}_pl
-		
-		
+
 		touch ~/.mpd/albumname.tmp >/dev/null
-		
-		
-#    		echo adding "$e" to mpd
-#    		echo mpc -p 6700 findadd Album "$e"
+
     		echo -e "\x1B[34m removing $filename.m3u \x1B[0m"
     		mpc -p 6700 rm $filename  > /dev/null 2>&1
     		wait
@@ -62,17 +58,10 @@ function createplaylists {
 		thirdtempscriptname=${secondtempscriptname//>/_}
 		scriptname=${thirdtempscriptname//\//+}_pl
 
-
-    		mpc -p 6700 shuffle >/dev/null
-    		wait
-    		mpc -p 6700 playlist >/dev/null
-    		wait
-#    		echo saving $filename.m3u
     		mpc -p 6700 save $filename >/dev/null
     		wait
     		mpc -p 6700 clear >/dev/null
     		wait
-#    		echo playlist cleared
     		
     		# create script to add playlist to current list in mpd
     		rm "/home/pi/.mpd/OtherScripts/Manage Playlists/Albums""/"$scriptname.sh >/dev/null 2>&1
@@ -80,13 +69,19 @@ function createplaylists {
     		touch "/home/pi/.mpd/OtherScripts/Manage Playlists/Albums""/"$scriptname.sh
     		wait
     		echo "#!/bin/sh" >"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
+    		echo clear >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
     		echo mpc -p 6700 load "$filename"" >/dev/null" >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
     		echo wait >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
-    		echo mpc -p 6700 playlist >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
+    		echo 'echo -e "\x1B[35m ------------------------------------------------------------ \x1B[0m"' >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
+		echo 'echo -e "\x1B[36m ------------------------------------------------------------ \x1B[0m"' >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
+    		echo mpc -p 6700 playlist "$filename" >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
+		echo 'echo -e "\x1B[36m ------------------------------------------------------------ \x1B[0m"' >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
+		echo 'echo -e "\x1B[35m ------------------------------------------------------------ \x1B[0m"' >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
     		echo wait >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
-    		echo sleep 5 >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
+    		echo sleep 2 >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
     		echo mpc -p 6700 rm custom_playlist >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
     		echo wait >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
+    		echo sleep 4 >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
     		echo mpc -p 6700 save custom_playlist" >/dev/null" >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
 
 	done

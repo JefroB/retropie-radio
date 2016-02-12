@@ -1,3 +1,3 @@
 #!/bin/sh
-mpc -p 6700 next
-sleep 8
+clear
+mpc -p 6700 next  > /dev/null 2>&1

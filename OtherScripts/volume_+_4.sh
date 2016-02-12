@@ -1,4 +1,5 @@
 #!/bin/sh
+clear
 function getvolume {
 	if [ -f "/home/pi/.mpd/current.vol" ]
 	then 
@@ -12,9 +13,8 @@ function getvolume {
 function increasevol {
 	local -i VOL=$CURRENTVOL
 	let NEWVOL=$VOL+4
-#	echo volume level is  now $NEWVOL
-	rm /home/pi/.mpd/current.vol
-	mpc -p 6700 volume $NEWVOL
+	rm /home/pi/.mpd/current.vol > /dev/null 2>&1
+	mpc -p 6700 volume $NEWVOL > /dev/null 2>&1
 }
 function savenewvol {
 	echo CURRENTVOL='"'$NEWVOL'"' >/home/pi/.mpd/current.vol

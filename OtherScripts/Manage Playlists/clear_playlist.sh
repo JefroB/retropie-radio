@@ -1,2 +1,3 @@
 #!/bin/sh
-mpc -p 6700 clear
+clear
+mpc -p 6700 clear > /dev/null 2>&1

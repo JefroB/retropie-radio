@@ -39,7 +39,7 @@ Backup your SD card, and your music collection, if it is seperate.
 ### Step 2
 (optional but recommended) If you'd like music to start playing at boot time, you'll need to add the following to /etc/rc.local:
 
-        su pi -c '/home/pi/.mpd/startup_playback.sh &'
+        su pi -c 'bash /home/pi/.mpd/startup_playback.sh &'
         
 ### Step 3
 Save the following script as retropie-radio in 

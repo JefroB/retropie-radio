@@ -23,7 +23,7 @@ function stop {
 }
 function killmpd {
 	sudo killall mpd >/dev/null
-	sleep 1
+	sleep .5
 	mpc volume 77 >/dev/null
 }
 function quit {

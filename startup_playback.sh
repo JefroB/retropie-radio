@@ -4,7 +4,7 @@ function getvolume {
 	then 
     		source /home/pi/.mpd/current.vol
     	else
-    		CURRENTVOL="70"
+    		CURRENTVOL="60"
     		touch /home/pi/.mpd/current.vol
     		echo CURRENTVOL='"70"' >/home/pi/.mpd/current.vol
 	fi
@@ -20,20 +20,14 @@ function clearpl {
 
 function loadlastpl {
 	mpc -p 6700 load custom_playlist  >/dev/null
-	mpc -p 6700 shuffle  >/dev/null
 }
 
 function insertsound {
-	mpc -p 6700 update startsounds/ >/dev/null
-	wait
 	mpc -p 6700 insert startsounds/kwrp.mp3 >/dev/null
-	wait
 }
 
 function setvolume0 {
-	local VOL=0
-	mpc volume $VOL >/dev/null
-	wait
+	mpc volume 0 >/dev/null
 }
 
 function play {
@@ -45,7 +39,6 @@ function fadein {
 	until [  $VOL -lt 0 ]; do
 	mpc -p 6700 volume +1 >/dev/null
 	let VOL-=1
-	sleep .005
 done
 }
 
@@ -64,3 +57,5 @@ fadein
 quit
 
 # eof
+
+

@@ -1,3 +1,3 @@
 #!/bin/sh
 mpc -p 6700 next
-sleep 15
+sleep 8

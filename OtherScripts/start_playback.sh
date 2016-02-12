@@ -3,7 +3,6 @@ function getvolume {
 	if [ -f "/home/pi/.mpd/current.vol" ]
 	then 
     		source /home/pi/.mpd/current.vol
-    		echo using file to get volume setting
     	else
     		CURRENTVOL="70"
     		touch /home/pi/.mpd/current.vol
@@ -13,15 +12,18 @@ function getvolume {
 }
 function startmpd {
 	mpd
+	wait
 }
 function setvolume0 {
 	local STARTVOL=0
 	mpc volume $STARTVOL >/dev/null
-	sleep .05
+	wait
 }
 function play {
-	sleep .02
+	sleep .2
 	mpc -p 6700 play >/dev/null
+	wait
+	mpc -p 6700 next >/dev/null
 }
 function fadein {
 	local VOL=$CURRENTVOL

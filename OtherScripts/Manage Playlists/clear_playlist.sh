@@ -1,2 +1,2 @@
-/bin/sh -e
+#!/bin/sh
 mpc -p 6700 clear

@@ -180,11 +180,6 @@ function stopmpd {
 function deleteinstallfiles {
 	sudo rm -rf /home/pi/.mpd/install
 }
-function reboot {
-	echo -e "\x1B[31m The pi must now reboot. Please wait... \x1B[0m"
-	sleep 3
-	sudo reboot
-}
 function quit {
 	exit 0
 }
@@ -200,6 +195,5 @@ editemulaunchfiles
 allplalylists
 deleteinstallfiles
 stopmpd
-reboot
 quit
 # eof

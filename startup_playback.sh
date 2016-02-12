@@ -11,7 +11,7 @@ function getvolume {
 }
 
 function startmpd {
-	mpd
+	mpd > /dev/null 2>&1
 }
 
 function clearpl {

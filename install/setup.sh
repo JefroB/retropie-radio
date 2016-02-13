@@ -156,8 +156,9 @@ function mpdupdate {
 	mpd
 	wait
 	echo -e "\x1B[31m Updating mpd database... \x1B[0m"
-	mpc -p 6700 update
+	mpc -p 6700 update  > /dev/null 2>&1
 	wait
+	mpc -p 6700 random  > /dev/null 2>&1
 }
 function allplalylists {
 	echo -e "\x1B[31m Creating all playlists. This can take some time... \x1B[0m"
@@ -172,7 +173,7 @@ function editemulaunchfiles {
 	rm "/home/pi/.mpd/install/emulaunceredits.sh" >/dev/null
 }
 function stopmpd {
-	mpc -p 6700 clear
+	mpc -p 6700 clear  > /dev/null 2>&1
 	wait
 	sudo killall mpd
 	wait

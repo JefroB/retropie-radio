@@ -42,7 +42,7 @@ Backup your SD card, and your music collection, if it is seperate.
         su pi -c 'bash /home/pi/.mpd/startup_playback.sh &'
         
 ### Step 3
-Save the following script as retropie-radio in 
+Save the following script as retropie-radio in /home/pi/RetroPie-Setup/scriptmodules/ports
 
 
 ```
@@ -57,6 +57,7 @@ Save the following script as retropie-radio in
 # at https://raw.githubusercontent.com/RetroPie/RetroPie-Setup/master/LICENSE.md
 #
 
+rp_module_menus="4+"
 rp_module_id="radio"
 rp_module_desc="Radio"
 
@@ -86,4 +87,4 @@ function configure_radio() {
 }
 ```
 ### Step 4
-You can now run the retropie-setup script and install retropie-radio from binary or source. (It’ll be listed under individual emulators towards the bottom of the list.)
+You can now run the retropie-setup script and install retropie-radio from binary or source. (It’ll be listed under experimental emulators.)

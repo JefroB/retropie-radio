@@ -1,6 +1,6 @@
 #!/bin/sh
 function startmpd {
-	mpd   > /dev/null 2>&1
+	mpd > /dev/null 2>&1
 	wait
 }
 function getmusicdirectory {
@@ -72,7 +72,29 @@ function success {
 function saveplaylist {
 	mpc -p 6700 shuffle
 	wait
-	mpc -p 6700 playlist
+	clear
+	touch /home/pi/.mpd/current_playlist.tmp > /dev/null 2>&1
+	echo -e "\x1B[35m ------------------------------------------------------------ \x1B[0m"
+	echo -e "\x1B[36m ------------------------------------------------------------ \x1B[0m"
+	echo -e "\x1B[32m --------------------- Current Playlist --------------------- \x1B[0m"
+	echo -e "\x1B[33m ------------------------------------------------------------ \x1B[0m"
+	
+	mpc -p 6700 playlist > ~/.mpd/current_playlist.tmp
+	wait
+	head -35 ~/.mpd/current_playlist.tmp
+	wait
+	
+	cat ~/.mpd/current_playlist.tmp | wc -l > ~/.mpd/playlistcount.tmp
+	wait
+	songcount=$(head -n 1 ~/.mpd/playlistcount.tmp)
+	echo -e "\x1B[31m -- Playlist contains "$songcount" songs. \x1B[0m"
+	
+	echo -e "\x1B[33m ------------------------------------------------------------ \x1B[0m"
+	echo -e "\x1B[32m ---- Only the first 35 songs in the playlist are shown. ---- \x1B[0m"
+	echo -e "\x1B[36m ------------------------------------------------------------ \x1B[0m"
+	echo -e "\x1B[35m ------------------------------------------------------------ \x1B[0m"
+	wait
+	sleep 10
 	wait
 	echo -e "\x1B[32m saving all_songs playlist \x1B[0m"
 	mpc -p 6700 save all_songs
@@ -85,9 +107,9 @@ function startplayback {
 	bash /home/pi/.mpd/startup_playback.sh
 }
 function quit {
-	sleep 9
+	sleep 7
 	echo -e "\x1B[35m WELCOME TO MOTHERGRABBIN RETROPIE \x1B[0m"
-	sleep 12
+	sleep 6
 	exit 0
 }
 startmpd

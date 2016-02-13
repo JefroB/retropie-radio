@@ -37,7 +37,7 @@ function createplaylists {
 		newname=${tempname// /_}
 		secondtempname=${newname//</_}
 		thirdtempname=${secondtempname//>/_}
-		filename=${thirdtempname//\//+}_pl
+		filename=${thirdtempname//\//+}_album
 
 		touch ~/.mpd/albumname.tmp >/dev/null
 
@@ -56,7 +56,7 @@ function createplaylists {
 		newscriptname=${tempscriptname// /_}
 		secondtempscriptname=${newscriptname//</_}
 		thirdtempscriptname=${secondtempscriptname//>/_}
-		scriptname=${thirdtempscriptname//\//+}_pl
+		scriptname=${thirdtempscriptname//\//+}_album
 
     		mpc -p 6700 save $filename >/dev/null
     		wait
@@ -79,10 +79,10 @@ function createplaylists {
 		echo 'echo -e "\x1B[35m ------------------------------------------------------------ \x1B[0m"' >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
     		echo wait >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
     		echo sleep 2 >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
-    		echo mpc -p 6700 rm custom_playlist >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
+    		echo mpc -p 6700 rm custom_albumaylist >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
     		echo wait >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
     		echo sleep 4 >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
-    		echo mpc -p 6700 save custom_playlist" >/dev/null" >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
+    		echo mpc -p 6700 save custom_albumaylist" >/dev/null" >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Albums/"$scriptname.sh
 
 	done
 	echo -e "\x1B[36m Playlist creation completed successfully! \x1B[0m"

@@ -61,11 +61,11 @@ function createplaylists {
     		echo clear >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
     		echo mpc -p 6700 load "$plname"" >/dev/null" >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
     		echo wait >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
-    		echo echo -e '"'\x1B[35m ------------------------------------------------------------ \x1B[0m'"' >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
-		echo echo -e '"'\x1B[36m ------------------------------------------------------------ \x1B[0m'"' >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
-    		echo mpc -p 6700 playlist "$filename" >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
-		echo echo -e '"'\x1B[36m ------------------------------------------------------------ \x1B[0m'"' >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
-		echo echo -e '"'\x1B[35m ------------------------------------------------------------ \x1B[0m'"' >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
+    		echo 'echo -e "\x1B[35m ------------------------------------------------------------ \x1B[0m"' >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
+		echo 'echo -e "\x1B[36m ------------------------------------------------------------ \x1B[0m"' >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
+    		echo mpc -p 6700 playlist "$plname" >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
+		echo 'echo -e "\x1B[36m ------------------------------------------------------------ \x1B[0m"' >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
+		echo 'echo -e "\x1B[35m ------------------------------------------------------------ \x1B[0m"' >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
     		echo wait >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
     		echo sleep 5 >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh
     		echo mpc -p 6700 rm custom_playlist >/dev/null >>"/home/pi/.mpd/OtherScripts/Manage Playlists/Genres/"$filename.sh

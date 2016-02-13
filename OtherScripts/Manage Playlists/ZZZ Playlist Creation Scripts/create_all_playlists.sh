@@ -3,9 +3,6 @@ function filecleanup {
 	echo -e "\x1B[31m Cleaning up some filenames and directroy paths, please wait... \x1B[0m"
 	bash "/home/pi/.mpd/OtherScripts/Manage Playlists/ZZZ Playlist Creation Scripts/filename_cleanup.sh"
 	wait
-	echo -e "\x1B[31m Cleaning up playlists... \x1B[0m"
-	rm /home/pi/.mpd/playlists/* > /dev/null 2>&1
-	wait
 }
 function genres {
 	echo -e "\x1B[31m Getting ready to create genre playlists. Please wait... \x1B[0m"
